@@ -49,7 +49,10 @@
             </ul>
         </div>
         <div class="LogoutSidebar">
-
+            <a href="#" class="log-out_US">
+                <span class="material-icons">logout</span>
+                <p>Salir</p>
+            </a>
         </div>
     </aside>
 
