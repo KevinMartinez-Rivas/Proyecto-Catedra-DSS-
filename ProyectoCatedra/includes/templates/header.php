@@ -13,7 +13,7 @@
 
 <header class="Header">
     <div class="BarraNavegacion">
-        <h4>Banco Nombre</h4>
+        <h4>Banco Salvadoreño</h4>
         <?php if($navHeader): ?>
         <nav>
             <a href="Index.php">Home</a>
