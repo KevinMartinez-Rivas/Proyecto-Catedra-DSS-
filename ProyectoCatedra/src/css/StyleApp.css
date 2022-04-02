@@ -1,0 +1,834 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --FuentePrincipal: 'Poppins', 'Sans-serif';
+    --Negro: #000000;
+    --GrisOscuro: #00000093;
+    --Blanco: #ffffff;
+    --GrisClaro: #d3d0d042;
+    --GrisO: #9d9d9d42;
+    --GrisC: #eeeeee;
+    --Gris: #353535;
+    --Primario: #ffd342;
+    --Secundario: #71c3a0;
+    --Tercesario: #fab3dd;
+    --Log-out: #ff4242;
+    --Danger: #ff4242;
+    --Accept: #47cf3a;
+}
+
+/* Globales */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    font-family: var(--FuentePrincipal);
+    margin: 0 auto;
+    overflow: overlay;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.01);
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--GrisOscuro);
+}
+
+p {
+    color: var(--Negro);
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    width: 100%;
+    max-width: 140rem;
+}
+
+.Contenido {
+    position: absolute;
+    width: calc(100% - 24rem);
+    height: 100%;
+    right: 0;
+    background-color: var(--Blanco);
+    transition: all 0.5s ease;
+}
+
+.Sidebar.active ~ .Contenido{
+    width: calc(100% - 6rem);
+}
+
+/** HEADER **/
+.Header {
+    width: 100%;
+    height: 6rem;
+    background-color: var(--GrisClaro);
+    display: flex;
+    align-items: center;
+}
+
+.Content-Button-Menu {
+    position: relative;
+    top: 0;
+    height: 3rem;
+    width: 3rem;
+}
+
+.Button-Menu {
+    display: grid;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    animation: animate-MenuB 1.5s ease forwards;
+    border: none;
+}
+
+.top-line{
+    position: relative;
+    width: 1.3rem;
+    height: 0.38rem;
+    margin-left: 0.4rem;
+    background-color: var(--Negro);
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    transform: rotate(0deg);
+    transform-origin: left;
+}
+
+.mid-line{
+    position: relative;
+    width: 3rem;
+    height: 0.38rem;
+    background-color: var(--Negro);
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    transform: rotate(0deg);
+    margin-left: 0.1rem;
+    z-index: 1;
+    box-shadow: 0 0 0 1.2px var(--Blanco);
+}
+
+.bot-line{
+    position: relative;
+    width: 1.3rem;
+    height: 0.38rem;
+    background-color: var(--Negro);
+    border-radius: 12px;
+    margin-left: 1.5rem;
+    transition: all 0.5s ease;
+    transform: rotate(0deg);
+    transform-origin: right;
+}
+
+.top-line.active {
+    transform: rotate(45deg);
+}
+
+.mid-line.active {
+    width: 2.6rem;
+    transform: rotate(-45deg);
+}
+
+.bot-line.active {
+    margin-left: 1rem;
+    transform: rotate(45deg);
+}
+
+/** SIDEBAR **/
+.Sidebar {
+    position: fixed;
+    height: 100vh;
+    width: 24rem;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Gris);
+    transition: all 0.5s ease;
+}
+
+.Sidebar.active {
+    width: 6rem;
+}
+
+.LogoSidebar {
+    width: 100%;
+    height: 6rem;
+}
+
+.LogoutSidebar {
+    width: 100%;
+    height: 6rem;
+}
+
+.MenuSidebar {
+    width: 100%;
+    height: calc(100% - 12rem);
+}
+
+.Menu-list{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.Menu-list .li-option {
+    list-style: none;
+    height: 100%;
+}
+
+.Menu-list .li-option .option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+}
+
+.Sidebar.active .Menu-list .li-option .option {
+    justify-content: center;
+}
+
+.Menu-list .li-option .option:hover {
+    background-color: var(--GrisOscuro);
+}
+
+.option span {
+    color: var(--Blanco);
+    font-size: 2.6rem;
+    margin-left: 20px;
+}
+
+.Sidebar.active .option span {
+    margin-left: 0;
+}
+
+.option p {
+    position: absolute;
+    width: 12rem;
+    color: var(--Blanco);
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-left: 6rem;
+    opacity: 1;
+}
+
+.Sidebar.active .option p {
+    margin-left: 17.9rem;
+    opacity: 0;
+}
+
+.option:hover span, .option:hover p {
+    color: var(--Primario);
+}
+
+.option.active span, .option.active p {
+    color: var(--Primario);
+}
+
+.log-out_US {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.Sidebar.active .log-out_US {
+    justify-content: center;
+}
+
+.log-out_US:hover {
+    background-color: var(--GrisOscuro);
+}
+
+.log-out_US span {
+    color: var(--Blanco);
+    font-size: 2.6rem;
+    margin-left: 20px;
+}
+
+.log-out_US p {
+    position: absolute;
+    width: 12rem;
+    color: var(--Blanco);
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-left: 6rem;
+    opacity: 1;
+}
+
+.Sidebar.active .log-out_US p {
+    margin-left: 17.9rem;
+    opacity: 0;
+}
+
+.Sidebar.active .log-out_US span {
+    margin-left: 0;
+}
+
+.log-out_US:hover span, .log-out_US:hover p {
+    color: var(--Log-out);
+}
+
+/** ADMIN **/
+.Contenedor-TituloAdmin {
+    width: 100%;
+    display: flex;   
+    align-items: center;
+}
+
+.Contenedor-TituloAdmin.t {
+    width: 100%;
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+}
+
+.Contenedor-TituloAdmin.g {
+    background-color: transparent;
+}
+
+.Contenedor-TituloAdmin.g {
+    background-color: var(--Secundario);
+}
+
+.Contenedor-TituloAdmin.r {
+    background-color: var(--Log-out);
+}
+
+.Contenedor-TituloAdmin.y {
+    background-color: var(--Primario);
+}
+
+.TituloAdmin {
+    font-weight: 400;
+    margin-left: 0.5rem;
+    color: var(--Blanco);
+}
+
+.TituloAdmin.i {
+    color: var(--Negro);
+}
+
+/* CREATE CUENTA */
+.FormularioCreate {
+    min-height: 47rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    margin: 2rem;
+    justify-items: center;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 765px) {
+    .FormularioCreate {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2.5rem;
+        row-gap: 5rem;
+    }
+}
+
+.Contenido-Input_CC {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Contenido-Input_CC div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 2rem;
+}
+
+.Contenido-Input_CC div label {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.Contenido-Input_CC div input {
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.titulo-OptionCC {
+    font-size: 2rem;
+    font-weight: 400;
+    background-color: var(--Gris);
+    color: var(--Blanco);
+}
+
+.Contenido-Select_CC {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.Contenido-Select_CC div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 2rem;
+}
+
+.Contenido-Select_CC div label {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.Contenido-Select_CC div select {
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.info-CC {
+    border-top: 0.5px solid var(--Gris);
+    background-color: var(--GrisClaro);
+    font-weight: 400;
+    font-size: 1.6rem;
+    text-align: justify;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.submit-CC {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: justify;
+}
+
+@media (min-width: 765px) {
+    .submit-CC {
+        gap: 0;
+    }
+}
+
+.submit-CC div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.submit-CC p {
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+.btn-CC {
+    height: 5rem;
+    width: 100%;
+    background-color: var(--Gris);
+    color: var(--Blanco);
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+}
+
+.btn-CC:hover {
+    background-color: #272727;
+    color: var(--Primario);
+    cursor: pointer;
+}
+
+/* DELETE CUENTA */
+.FormularioDelete {
+    min-height: 47rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem;
+    justify-items: center;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 765px) {
+    .FormularioDelete {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.submit-DC {
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media (min-width: 765px) {
+    .submit-DC {
+        grid-column: 1/3;
+    }
+}
+
+/** GESTION DE RECARGOS Y OPERACIONES **/
+.Contenedor-OpcionesRecargos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-left: 2rem;
+}
+
+.Formulario-Recargos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--Gris);
+}
+
+.Formulario-Recargos .Titulo-Operaciones {
+    grid-column: 1/4;
+}
+
+.Inputs-Recargos {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.Inputs-Recargos input {
+    width: 100%;
+    height: 60%;
+    color: var(--Blanco);
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--Gris);
+}
+
+.submit-Operaciones.g:hover {
+    color: var(--Primario);
+    cursor: pointer;
+}
+
+.submit-Operaciones.r:hover {
+    color: var(--Danger);
+    cursor: pointer;
+}
+
+.Inputs-Operaciones {
+    display: flex;
+    flex-direction: column;
+}
+
+.Inputs-Operaciones div {
+    display: flex;
+    flex-direction: column;
+}
+
+.Inputs-Operaciones div p,  .Inputs-Operaciones div label{
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.Inputs-Operaciones div span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--Accept);
+}
+
+.Inputs-Operaciones div input {
+    width: 90%;
+}
+
+.Formulario-Operaciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.Formulario-Operaciones:nth-child(even) {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--Gris);
+}
+
+.Formulario-Operaciones:nth-child(odd) {
+    margin-bottom: 2rem;
+}
+
+.Formulario-Operaciones .Titulo-Operaciones {
+    grid-column: 1/4;
+}
+
+.Formulario-Operaciones .Inputs-Operaciones {
+    grid-column: 1/3;
+}
+
+/* APP (USER) */
+.Contenedor-Cuentas {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 2rem;
+    row-gap: 3.5rem;
+}
+
+@media (min-width: 765px) {
+    .Contenedor-Cuentas {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+        row-gap: 3.5rem;
+    }
+}
+
+.Cuenta-REG {
+    position: relative;
+    color: var(--Gris);
+}
+
+.Cuenta-REG .Datoscuenta {
+    position: relative;
+    background-color: var(--GrisC);
+    border-radius: 0 12px 12px 0;
+    border-left: 1rem solid var(--Gris);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2rem;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+.Cuenta-REG:hover .Datoscuenta {
+    background-color: var(--Gris);
+    border-left: 1rem solid var(--Primario);
+}
+
+.Cuenta-REG p {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--Gris);
+    transition: all 0.2s ease;
+}
+
+.Cuenta-REG:hover p, .Cuenta-REG:hover span {
+    color: var(--Blanco);
+}
+
+.Cuenta-REG span {
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--Gris);
+    transition: all 0.2s ease;
+}
+
+.Cuenta-REG .hidecuenta {
+    position: absolute;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Primario);
+    bottom: 0;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.Cuenta-REG:hover .hidecuenta {
+    bottom: -2.5rem;
+}
+
+.Cuenta-REG .hidecuenta .hidetext {
+    color: var(--Gris);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* APP (HISTORIAL)*/
+.Tabla-Historial {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0  1rem 1rem 1rem;
+}
+
+.Tabla-Historial thead {
+    background-color: var(--Gris);
+}
+
+.Tabla-Historial thead tr th {
+    color: var(--Blanco);
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.Tabla-Historial tbody tr:nth-child(odd) {
+    background-color: var(--GrisClaro);
+}
+
+.Tabla-Historial tbody tr:nth-child(even) {
+    background-color: var(--GrisO);
+}
+
+.TR-Historial {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.TR-Historial td {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+/** APP (DEPOSITAR SALDO) **/
+.Contenedor-DEP {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    height: calc(100vh - 10.4rem);
+}
+
+.Mostrar-NuevoSaldo {
+    grid-column: 1/3;
+}
+
+.SaldoActual-DEP h3, .NuevoSaldo-DEP h3{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.SaldoActual-DEP p {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--Primario);
+    text-align: center;
+}
+
+.NuevoSaldo-DEP div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.NuevoSaldo-DEP div label {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--Gris);
+}
+
+.NuevoSaldo-DEP .Operacion-Saldo {
+    background-color: var(--Gris);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--Blanco);
+    margin-top: 1rem;
+}
+
+.NuevoSaldo-DEP .Operacion-Saldo:hover {
+    color: var(--Primario);
+    cursor: pointer;
+}
+
+.Mostrar-NuevoSaldo h3 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.Mostrar-NuevoSaldo p {
+    font-size: 6rem;
+    font-weight: bold;
+    color: var(--Primario);
+    text-align: center; 
+}
+
+/** APP (MOSTRAR SALDO) **/
+.Contenedor-TituloAdmin.gr {
+    background-color: var(--GrisOscuro);
+}
+
+.TituloAdmin.gr {
+    font-weight: 400;
+    margin-left: 0.5rem;
+    color: var(--Blanco);
+}
+
+.Mostrar-Saldo {
+    width: 100%;
+    height: calc(100vh - 10.4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Mostrar-Saldo h3 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.Mostrar-Saldo p {
+    font-size: 9rem;
+    font-weight: bold;
+    color: var(--Primario);
+}
+
+/** Elementos graficos **/
+.Contenedor-Errores {
+    display: grid;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.red {
+    color: var(--Danger);
+}
+
+.green {
+    color: var(--Accept);
+}
+
+.Alerta {
+    display: flex;
+    align-items: stretch;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
