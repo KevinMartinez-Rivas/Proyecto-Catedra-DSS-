@@ -68,7 +68,7 @@ CREATE TABLE Recargos (
 	CodigoCategoriaCuenta char(3) NOT NULL,
 	OperacionesDisponibles int,
 	RecargoMensual decimal(4,2),
-	CONSTRAINT FK_CategoriaCuenta_CodigoCategoriaCuenta FOREIGN KEY (CodigoCategoriaCuenta) REFERENCES CategoriaCuenta(CodigoCategoria),
+	CONSTRAINT FK_CategoriaCuenta_CodigoCategoriaCuenta FOREIGN KEY (CodigoCategoriaCuenta) REFERENCES CategoriaCuenta(CodigoCategoria)
 );
 
 INSERT INTO Recargos(CodigoCategoriaCuenta, OperacionesDisponibles, RecargoMensual) VALUES ('AHR', 75, 01.00);
